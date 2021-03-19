@@ -88,7 +88,7 @@ def threadedC(id):
     now = datetime.now()
     dt_string = now.strftime("%Y-%m-%d-%H-%M-%S")
     print("date and time =", dt_string)	
-    log = open(dt_string+"-log.txt","a")
+    log = open(dt_string+"_client_"+id+"-log.txt","a")
     log.write("Comenzando Cliente\n")
     fileName, clientId = helloProtocol(socket, log)
     saveFileFromServer(fileName, socket, clientId, log)
@@ -106,8 +106,7 @@ def Main():
     # print (clientNumber)
     thread_list = []
     for j in range(clientNumber):
-        print(j)
-        thread = threading.Thread(target = threadedC, args = (j,))
+        thread = threading.Thread(target = threadedC, args = (j+1,))
         thread.start()
         thread_list.append(thread)
 
