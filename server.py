@@ -26,17 +26,17 @@ def threaded(connection, fileName, hash, clientId, log):
     cliente = connection.recv(2048)
     elapsed_time = time() - start_time
     if cliente == bytes("Ya recibi", "utf-8"):
-        print("Confimacion exitosa para cliente" + str(clientId))
+        print("Confimacion exitosa para cliente " + str(clientId))
         log.write("Tranferencia Exitosa hacia el cliente "+ str(clientId)+"\n")
     else:
-        print("Confimacion exitosa para cliente" + str(clientId))
+        print("Confimacion exitosa para cliente " + str(clientId))
         log.write("Tranferencia No Exitosa hacia el cliente "+ str(clientId)+"\n")
     log.write("El tiempo de transferencia del archivo "+fileName+" al cliente"+
               str(clientId)+" es: "+str(elapsed_time)+" segundos\n")
     log.write("Numero de paquetes enviados al cliente "+ str(clientId) +" = "+str(paquetes)+" paquetes\n")
     sizefile = os.stat(fileName).st_size
     log.write("Valor total de bytes enviados al cliente "+ str(clientId) +" = "+str(sizefile)+" bytes\n")
-    print("el cliente "+str(clientId) +"ha mandado: "+ str(cliente))
+    print("El cliente "+str(clientId) +" ha mandado: "+ str(cliente))
     connection.send(hash)
     # Cerrar conexión y archivo.
     connection.close()
@@ -83,7 +83,7 @@ def Main():
     print('2. Archivo de 250MB')
     opcionA = input()
     log.write("Nombre del archivo Enviado: ")
-    consoleMsg = ('Ustede selecciono la opcion ' + opcionA) if opcionA == '1' or opcionA == '2' else 'Opcion de prueba'
+    consoleMsg = ('Usted selecciono la opcion ' + opcionA) if opcionA == '1' or opcionA == '2' else 'Opcion de prueba'
     print(consoleMsg)
     fielName = getFileName(opcionA)
     log.write(fielName+"\n")
@@ -93,7 +93,7 @@ def Main():
     print('Usted seleciono '+str(opcionU)+' usuarios')
     # put the socket into listening mode 
     server.listen(25) 
-    print("socket is listening") 
+    print("Socket is listening") 
     clientId = 0
     lista = []
     # a forever loop until client wants to exit 
@@ -107,7 +107,7 @@ def Main():
         conecction.send(bytes(str(clientId),"utf-8"))
         comprobacion = conecction.recv(2048)
         if comprobacion == bytes("Ya recibi mi numero", "utf-8"):
-            print("el cliente recibio su numero")
+            print("El cliente recibio su numero")
         else:
             print("Error recibiendo comprobacion")
 
