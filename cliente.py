@@ -8,7 +8,7 @@ import os
 def connectToServer():
     sock = socket()
     server_address = ('172.31.200.83', 10000)
-    print('connecting to {} port {}'.format(*server_address))
+    print('Connecting to {} port {}'.format(*server_address))
     sock.connect(server_address)
     return sock
 
@@ -44,8 +44,8 @@ def checkHash(socket, fileName):
             hash = input_data
             calculateHash = getHashFromFile(fileName)
             comprobacion = hash == calculateHash
-            print("hash recibido: "+ str(hash))
-            print("hash calculado: "+ str(calculateHash))
+            print("Hash recibido: "+ str(hash))
+            print("Hash calculado: "+ str(calculateHash))
             print("Son iguales = " + str(comprobacion)) 
 
 
@@ -83,7 +83,7 @@ def saveFileFromServer(fileName, socket , clientId, log):
 
 
 def threadedC(id):
-    print('inicio cliente')
+    print('Inicio cliente')
     socket = connectToServer()
     now = datetime.now()
     dt_string = now.strftime("%Y-%m-%d-%H-%M-%S")
@@ -112,7 +112,7 @@ def Main():
 
     for thread in thread_list:
         thread.join()
-    print("Se termino de recivir la informacion de todos los clientes")
+    print("Se termino de recibir la informacion de todos los clientes")
 
 if __name__ == '__main__': 
     Main() 
